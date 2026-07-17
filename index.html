@@ -153,6 +153,25 @@
     .page { padding: 48px 16px 32px; }
     #n8n-chat, .chat-shell { height: 420px; }
   }
+  .reset-link {
+    margin-top: 18px;
+    background: rgba(193, 101, 47, 0.12);
+    border: 1px solid rgba(193, 101, 47, 0.4);
+    color: var(--thread-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .reset-link:hover {
+    color: #fff;
+    background: var(--thread);
+    border-color: var(--thread);
+  }
 </style>
 </head>
 <body>
@@ -166,7 +185,8 @@
         <div id="n8n-chat"></div>
       </div>
     </div>
-
+    <button id="reset-chat" class="reset-link" type="button">↺ Start New Conversation</button>
+    
     <div class="footer">Everwear<span class="dot">&middot;</span>Customer Support</div>
   </div>
 
