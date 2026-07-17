@@ -213,6 +213,13 @@
           footer: ''
         }
       }
+      // Reset conversation: clears the stored session (so a brand new
+    // session ID gets generated) rather than just clearing the visible
+    // chat window, which wouldn't actually reset the AI Agent's memory.
+    document.getElementById('reset-chat').addEventListener('click', () => {
+      localStorage.clear();
+      sessionStorage.clear();
+      location.reload();
     });
   </script>
 </body>
