@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Everwear Support</title>
+<style>
+  :root {
+    --indigo-950: #14192b;
+    --indigo-900: #1c2440;
+    --indigo-700: #2d3a63;
+    --indigo-500: #4a5b93;
+    --canvas: #ece5d6;
+    --thread: #c1652f;
+    --thread-light: #e08a52;
+    --stitch-gap: 6px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% -10%, var(--indigo-700) 0%, transparent 60%),
+      linear-gradient(160deg, var(--indigo-950) 0%, var(--indigo-900) 45%, #10162a 100%);
+    color: var(--canvas);
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Subtle woven denim texture via layered diagonal lines */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 4px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 4px);
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 72px 24px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--thread-light);
+    font-weight: 600;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::before,
+  .eyebrow::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--thread);
+    opacity: 0.6;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: clamp(40px, 8vw, 58px);
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+    color: #fff;
+  }
+
+  .tagline {
+    font-size: 16px;
+    color: rgba(236, 229, 214, 0.72);
+    max-width: 420px;
+    line-height: 1.5;
+    margin: 0 0 44px;
+  }
+
+  /* Stitched-seam frame around the chat widget — the signature element */
+  .stitch-frame {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    padding: 14px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1.5px dashed var(--thread);
+    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.55);
+  }
+
+  .stitch-frame::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 16px;
+    border: 1px dashed rgba(193, 101, 47, 0.35);
+    pointer-events: none;
+  }
+
+  .chat-shell {
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--canvas);
+    min-height: 480px;
+  }
+
+  #n8n-chat {
+    width: 100%;
+    height: 480px;
+  }
+
+  .setup-note {
+    color: #6b5c4a;
+    font-size: 13px;
+    padding: 20px;
+    line-height: 1.6;
+    text-align: left;
+  }
+  .setup-note code {
+    background: #ddd3bd;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .footer {
+    margin-top: 32px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(236, 229, 214, 0.45);
+  }
+  .footer .dot { color: var(--thread); margin: 0 8px; }
+
+  @media (max-width: 480px) {
+    .page { padding: 48px 16px 32px; }
+    #n8n-chat, .chat-shell { height: 420px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="eyebrow">Everwear</div>
+    <h1>How can we help?</h1>
+    <p class="tagline">Ask about an order, a return, or anything else — our assistant is stitched in and ready.</p>
+
+    <div class="stitch-frame">
+      <div class="chat-shell">
+        <div id="n8n-chat"></div>
+      </div>
+    </div>
+
+    <div class="footer">Everwear<span class="dot">&middot;</span>Customer Support</div>
+  </div>
+
+  <!-- n8n Chat Widget -->
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+      webhookUrl: 'PASTE_YOUR_NGROK_CHAT_WEBHOOK_URL_HERE',
+      target: '#n8n-chat',
+      mode: 'fullscreen',
+      showWelcomeScreen: false,
+      initialMessages: [
+        "Hi! 👋 I'm Everwear's support assistant.",
+        "Ask me about an order, a return, or anything else!"
+      ],
+      i18n: {
+        en: {
+          title: '',
+          subtitle: '',
+          inputPlaceholder: 'Type your question..',
+          getStarted: 'New Conversation',
+          footer: ''
+        }
+      }
+    });
+  </script>
+</body>
+</html>
