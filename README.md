@@ -2,7 +2,8 @@
 
 An AI-powered support assistant for a fictional e-commerce brand, built to demonstrate how a business can automate order support, issue tracking, and urgent escalations — without needing a full support team on standby 24/7.
 
-**Live demo: https://www.loom.com/share/b478a3b47a594a0ea0f81beb940970ef
+**Live demo:** *(add your GitHub Pages link here once hosted)*
+**Demo video:** [Watch the walkthrough](https://www.loom.com/share/b478a3b47a594a0ea0f81beb940970ef)
 
 ---
 
