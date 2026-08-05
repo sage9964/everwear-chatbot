@@ -61,13 +61,6 @@ All of this runs with memory — the assistant remembers earlier parts of the sa
 - **Google Sheets** — order data, ticket log, and escalation log
 - **Slack** — real-time alerts to the support team
 - **GitHub Pages** — hosting for this demo page
-
-## Project files
-
-- [`index.html`](./index.html) — the branded demo page with the embedded chat widget
-- [`workflow.json`](./workflow.json) — the exported n8n workflow *(add once exported)*
-- [`docs/build-notes.md`](./docs/build-notes.md) — detailed build log, including architecture decisions and debugging notes *(optional, for anyone who wants to go deeper)*
-
 ---
 
 ## A note on this demo
